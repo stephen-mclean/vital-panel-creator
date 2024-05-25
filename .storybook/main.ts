@@ -13,5 +13,9 @@ const config: StorybookConfig = {
     name: "@storybook/react-vite",
     options: {},
   },
+  previewHead: (head) => `${head}<script
+  src="https://kit.fontawesome.com/d13c2e30fc.js"
+  crossorigin="anonymous"
+></script>`,
 };
 export default config;
