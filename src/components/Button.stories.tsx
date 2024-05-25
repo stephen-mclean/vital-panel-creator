@@ -60,3 +60,10 @@ export const Icon: Story = {
     children: <i className="fa-solid fa-pen"></i>,
   },
 };
+
+export const Tooltip: Story = {
+  args: {
+    children: <i className="fa-solid fa-pen"></i>,
+    tooltip: "Edit",
+  },
+};
