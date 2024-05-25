@@ -10,6 +10,7 @@ export const Input = ({
   label,
   error,
   fullWidth,
+  id,
   ...inputProps
 }: InputProps) => {
   return (
@@ -19,10 +20,13 @@ export const Input = ({
       })}
     >
       {label && (
-        <label className="text-gray-600 font-medium text-sm">{label}</label>
+        <label htmlFor={id} className="text-gray-600 font-medium text-sm">
+          {label}
+        </label>
       )}
       <input
         {...inputProps}
+        id={id}
         className={classNames(
           "bg-gray-50 text-gray-500 focus:outline-none  rounded px-2 py-1 transition-colors placeholder:text-gray-300",
           {
