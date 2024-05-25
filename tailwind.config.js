@@ -8,6 +8,7 @@ export default {
           50: "#EDF5F9",
           100: "#CAE1EE",
           500: "#86BBD8",
+          600: "#61A6CC",
         },
         accent: {
           50: "#FCEBF6",
