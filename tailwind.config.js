@@ -7,17 +7,20 @@ export default {
         primary: {
           50: "#EDF5F9",
           100: "#CAE1EE",
+          200: "#a7cee3",
           500: "#86BBD8",
           600: "#61A6CC",
         },
         accent: {
           50: "#FCEBF6",
           100: "#F6C2E3",
+          200: "#f199d1",
           500: "#6A0F49",
         },
         error: {
           50: "#FDEAEE",
           100: "#F9BFCB",
+          200: "#f595a9",
           500: "#EE4266",
         },
       },

@@ -67,3 +67,10 @@ export const Tooltip: Story = {
     tooltip: "Edit",
   },
 };
+
+export const Disabled: Story = {
+  args: {
+    children: "Button",
+    disabled: true,
+  },
+};
