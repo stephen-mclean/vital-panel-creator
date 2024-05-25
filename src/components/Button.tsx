@@ -19,7 +19,7 @@ export const Button = ({
     <>
       <button
         className={classNames(
-          "px-4 py-2 rounded font-sans transition-colors",
+          "px-4 py-2 rounded font-sans transition-colors flex gap-2 items-center",
           {
             "bg-gray-100 text-gray-600 hover:text-gray-700":
               variant === "secondary",
