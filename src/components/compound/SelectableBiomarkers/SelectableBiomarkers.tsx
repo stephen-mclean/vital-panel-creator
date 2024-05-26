@@ -9,11 +9,16 @@ import { PaginationControls } from "../PaginationControls/PaginationControls";
 type Props = {
   selected: Biomarker[];
   onChange: (selected: Biomarker[]) => void;
+  disabled?: boolean;
 };
 
 const DEFAULT_PAGE_LIMIT = 5;
 
-export const SelectableBiomarkers = ({ selected, onChange }: Props) => {
+export const SelectableBiomarkers = ({
+  selected,
+  onChange,
+  disabled,
+}: Props) => {
   const [page, setPage] = useState(0);
   const { isError, isLoading, markers, total } = useAvailableBiomarkers({
     page,
@@ -67,13 +72,14 @@ export const SelectableBiomarkers = ({ selected, onChange }: Props) => {
 
   return (
     <div className="flex flex-col">
-      <span className="text-sm text-gray-600 mb-4">Biomarkers</span>
+      <span className="text-sm text-gray-600 mb-2">Biomarkers</span>
       <div className="flex gap-1 mb-4">
         {selected.map((b) => (
           <Chip
             label={b.name}
             key={b.id}
             onDismiss={() => removeBioMarker(b)}
+            disabled={disabled}
           />
         ))}
       </div>
@@ -86,6 +92,7 @@ export const SelectableBiomarkers = ({ selected, onChange }: Props) => {
             description={marker.description}
             onToggle={() => onToggle(marker)}
             selected={isSelected(marker)}
+            disabled={disabled}
           />
         ))}
         <div className="flex justify-end">
@@ -94,6 +101,7 @@ export const SelectableBiomarkers = ({ selected, onChange }: Props) => {
             onPrevious={goToPreviousPage}
             canNavigateNext={canNavigateNext}
             canNavigatePrevious={canNavigatePrevious}
+            disabled={disabled}
           />
         </div>
       </div>

@@ -33,6 +33,14 @@ export const Dismissible: Story = {
   },
 };
 
+export const Disabled: Story = {
+  args: {
+    label: "Chip",
+    onDismiss: fn(),
+    disabled: true,
+  },
+};
+
 export const LongLabel: Story = {
   args: {
     label: "This is a really long label that should be truncated",

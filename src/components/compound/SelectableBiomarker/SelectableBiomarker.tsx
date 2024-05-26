@@ -5,6 +5,7 @@ type Props = {
   description?: string;
   selected: boolean;
   onToggle: () => void;
+  disabled?: boolean;
 };
 
 export const SelectableBiomarker = ({
@@ -12,6 +13,7 @@ export const SelectableBiomarker = ({
   description,
   selected,
   onToggle,
+  disabled,
 }: Props) => {
   return (
     <div className="flex justify-between gap-4 rounded p-2 border border-gray-50">
@@ -33,9 +35,10 @@ export const SelectableBiomarker = ({
       </div>
 
       <Button
-        tooltip={selected ? "Remove" : "Add to panel"}
+        tooltip={disabled ? undefined : selected ? "Remove" : "Add to panel"}
         variant={selected ? "primary" : "secondary"}
         onClick={onToggle}
+        disabled={disabled}
       >
         {selected ? <i className="fa-solid fa-check"></i> : "Add"}
       </Button>

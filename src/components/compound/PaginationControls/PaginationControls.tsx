@@ -5,6 +5,7 @@ type Props = {
   onPrevious: () => void;
   canNavigateNext: boolean;
   canNavigatePrevious: boolean;
+  disabled?: boolean;
 };
 
 export const PaginationControls = ({
@@ -12,18 +13,23 @@ export const PaginationControls = ({
   onPrevious,
   canNavigateNext,
   canNavigatePrevious,
+  disabled,
 }: Props) => {
   return (
     <div className="flex gap-2">
       <Button
         variant="ghost"
         onClick={onPrevious}
-        disabled={!canNavigatePrevious}
+        disabled={!canNavigatePrevious || disabled}
       >
         <i className="fa-solid fa-chevron-left"></i>
         Previous
       </Button>
-      <Button variant="ghost" onClick={onNext} disabled={!canNavigateNext}>
+      <Button
+        variant="ghost"
+        onClick={onNext}
+        disabled={!canNavigateNext || disabled}
+      >
         Next
         <i className="fa-solid fa-chevron-right"></i>
       </Button>
