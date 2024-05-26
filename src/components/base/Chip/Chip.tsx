@@ -17,7 +17,9 @@ export const Chip = ({ label, onDismiss }: Props) => {
       )}
       onClick={onDismiss}
     >
-      {label}
+      <span title={label} className="max-w-24 line-clamp-1">
+        {label}
+      </span>
       {onDismiss && <i className="fa-solid fa-xmark"></i>}
     </div>
   );

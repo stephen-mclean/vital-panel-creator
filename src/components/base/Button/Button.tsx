@@ -3,11 +3,13 @@ import { Tooltip } from "react-tooltip";
 
 interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   variant?: "primary" | "secondary" | "accent" | "error" | "ghost";
+  size?: "sm" | "md";
   tooltip?: string;
 }
 
 export const Button = ({
   variant = "secondary",
+  size = "md",
   children,
   id,
   tooltip,
@@ -20,7 +22,7 @@ export const Button = ({
     <>
       <button
         className={classNames(
-          "px-4 py-2 rounded font-sans transition-colors flex gap-2 items-center",
+          "rounded font-sans transition-colors flex gap-2 items-center",
           {
             "bg-gray-100 text-gray-600 disabled:bg-gray-50 disabled:text-gray-200 hover:text-gray-700":
               variant === "secondary",
@@ -32,6 +34,8 @@ export const Button = ({
               variant === "error",
             "bg-transparent text-primary-500 hover:text-primary-600 disabled:text-primary-100":
               variant === "ghost",
+            "px-4 py-2": size === "md",
+            "px-2 py-1": size === "sm",
           },
           className
         )}

@@ -27,6 +27,13 @@ export const Default: Story = {
   },
 };
 
+export const Small: Story = {
+  args: {
+    size: "sm",
+    children: "Button",
+  },
+};
+
 export const Primary: Story = {
   args: {
     variant: "primary",

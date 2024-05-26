@@ -26,3 +26,42 @@ export const Default: Story = {
     selected: [],
   },
 };
+
+export const WithSelected: Story = {
+  args: {
+    selected: [
+      {
+        id: 1,
+        name: "Biomarker 1",
+        description: "This is the first biomarker",
+      },
+    ],
+  },
+};
+
+export const WithMultipleSelected: Story = {
+  args: {
+    selected: [
+      {
+        id: 1,
+        name: "Biomarker 1",
+        description: "This is the first biomarker",
+      },
+      {
+        id: 2,
+        name: "Biomarker 2",
+        description: "This is the second biomarker",
+      },
+      {
+        id: 3,
+        name: "Biomarker 3",
+        description: "This is the third biomarker",
+      },
+      {
+        id: 6,
+        name: "Biomarker 6",
+        description: "This is the sixth biomarker",
+      },
+    ],
+  },
+};

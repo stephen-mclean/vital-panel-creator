@@ -32,3 +32,10 @@ export const Dismissible: Story = {
     onDismiss: fn(),
   },
 };
+
+export const LongLabel: Story = {
+  args: {
+    label: "This is a really long label that should be truncated",
+    onDismiss: fn(),
+  },
+};
