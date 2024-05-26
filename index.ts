@@ -1,8 +1,8 @@
 import express, { Express, Request, Response } from "express";
 import { VitalClient, VitalEnvironment } from "@tryvital/vital-node";
-import dotenv from "dotenv";
+import { config } from "dotenv";
 
-dotenv.config();
+config();
 
 const app: Express = express();
 const port = process.env.PORT || 3000;
