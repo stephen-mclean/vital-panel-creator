@@ -30,6 +30,13 @@ export const Default: Story = {
   },
 };
 
+export const WithoutDescription: Story = {
+  args: {
+    name: "Acetylcholine Receptor (AChR) Antibodies, Complete Profile with Reflex to MuSK Antibodies",
+    selected: false,
+  },
+};
+
 export const Selected: Story = {
   args: {
     name: "Acetylcholine Receptor (AChR) Antibodies, Complete Profile with Reflex to MuSK Antibodies",
