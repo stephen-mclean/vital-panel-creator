@@ -24,6 +24,12 @@ export const Default: Story = {
   args: {},
 };
 
+Default.loaders = [
+  () => {
+    localStorage.removeItem(PANELS_STORAGE_KEY);
+  },
+];
+
 export const WithOnePanel: Story = {
   args: {},
 };
