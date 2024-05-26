@@ -11,7 +11,9 @@ function App() {
     navigate(`/edit/${panel.id}`);
   };
 
-  const onDeletePanel = (panel: Panel) => {};
+  const onDeletePanel = (panel: Panel) => {
+    navigate(`/delete/${panel.id}`);
+  };
 
   return (
     <PageLayout>

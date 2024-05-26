@@ -39,6 +39,7 @@ export const SelectableBiomarker = ({
         variant={selected ? "primary" : "secondary"}
         onClick={onToggle}
         disabled={disabled}
+        type="button"
       >
         {selected ? <i className="fa-solid fa-check"></i> : "Add"}
       </Button>
