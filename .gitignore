@@ -25,4 +25,3 @@ node_modules
 storybook-static
 
 .env
-index.js
