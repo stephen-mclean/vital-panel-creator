@@ -2,36 +2,33 @@ import { useState } from "react";
 import { Panel } from "../../types";
 import { PANELS_STORAGE_KEY } from "../constants";
 
-const createPanel = async (panel: Panel) => {
+const updatePanel = async (panel: Panel) => {
   // Simulate a network delay
   await new Promise((resolve) => setTimeout(resolve, 1000));
-
-  // Create a random id for the panel
-  panel.id = Math.floor(Math.random() * 1000);
 
   const stored = localStorage.getItem(PANELS_STORAGE_KEY);
 
   if (!stored) {
-    localStorage.setItem(PANELS_STORAGE_KEY, JSON.stringify([panel]));
     return;
   }
 
   const panels = JSON.parse(stored) as Panel[];
-  localStorage.setItem(PANELS_STORAGE_KEY, JSON.stringify([...panels, panel]));
+  const updatedPanels = panels.map((p) => (p.id === panel.id ? panel : p));
+  localStorage.setItem(PANELS_STORAGE_KEY, JSON.stringify(updatedPanels));
 };
 
-export const useCreatePanel = ({ onSuccess }: { onSuccess?: () => void }) => {
+export const useUpdatePanel = ({ onSuccess }: { onSuccess?: () => void }) => {
   const [isLoading, setIsLoading] = useState(false);
 
-  const create = async (panel: Panel) => {
+  const update = async (panel: Panel) => {
     setIsLoading(true);
-    await createPanel(panel);
+    await updatePanel(panel);
     setIsLoading(false);
     onSuccess?.();
   };
 
   return {
-    create,
+    update,
     isLoading,
   };
 };

@@ -4,6 +4,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import App from "./pages/App.tsx";
 import "./index.css";
 import CreatePanel from "./pages/CreatePanel.tsx";
+import { ModifyPanel } from "./pages/ModifyPanel.tsx";
 
 const router = createBrowserRouter([
   {
@@ -13,6 +14,10 @@ const router = createBrowserRouter([
   {
     path: "/new",
     element: <CreatePanel />,
+  },
+  {
+    path: "/edit/:id",
+    element: <ModifyPanel />,
   },
 ]);
 

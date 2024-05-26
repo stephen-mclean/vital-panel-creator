@@ -1,11 +1,16 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Button } from "../components/base/Button/Button";
 import { PanelList } from "../components/compound/PanelList/PanelList";
 import { Panel } from "../types";
 import { PageLayout } from "../components/compound/PageLayout/PageLayout";
 
 function App() {
-  const onEditPanel = (panel: Panel) => {};
+  const navigate = useNavigate();
+
+  const onEditPanel = (panel: Panel) => {
+    navigate(`/edit/${panel.id}`);
+  };
+
   const onDeletePanel = (panel: Panel) => {};
 
   return (
