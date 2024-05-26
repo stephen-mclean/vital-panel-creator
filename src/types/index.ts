@@ -23,6 +23,7 @@ export const ALL_COLLECTION_METHODS: CollectionMethod[] = [
 ];
 
 export type Panel = {
+  id?: number;
   name: string;
   markers: Biomarker[];
   method: CollectionMethod;

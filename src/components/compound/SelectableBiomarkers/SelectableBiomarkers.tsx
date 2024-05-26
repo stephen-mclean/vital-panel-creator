@@ -5,14 +5,13 @@ import { Chip } from "../../base/Chip/Chip";
 import { InfoMessage } from "../../base/InfoMessage/InfoMessage";
 import { SelectableBiomarker } from "../SelectableBiomarker/SelectableBiomarker";
 import { PaginationControls } from "../PaginationControls/PaginationControls";
+import { DEFAULT_PAGE_LIMIT } from "../../../api/constants";
 
 type Props = {
   selected: Biomarker[];
   onChange: (selected: Biomarker[]) => void;
   disabled?: boolean;
 };
-
-const DEFAULT_PAGE_LIMIT = 5;
 
 export const SelectableBiomarkers = ({
   selected,

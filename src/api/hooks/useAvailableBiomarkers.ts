@@ -1,12 +1,11 @@
 import { useEffect, useState } from "react";
 import { Biomarker } from "../../types";
+import { DEFAULT_PAGE_LIMIT } from "../constants";
 
 type UseAvailableBiomarkersConfig = {
   page: number;
   limit: number;
 };
-
-const DEFAULT_PAGE_LIMIT = 5;
 
 const fetchBiomarkers = async () => {
   await new Promise((resolve) => setTimeout(resolve, 1000));
