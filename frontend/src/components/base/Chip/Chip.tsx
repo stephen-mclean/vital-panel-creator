@@ -18,6 +18,7 @@ export const Chip = ({ label, onDismiss, disabled }: Props) => {
         }
       )}
       onClick={!disabled ? onDismiss : undefined}
+      data-testid={`chip-${label}`}
     >
       <span title={label} className="max-w-24 line-clamp-1">
         {label}
