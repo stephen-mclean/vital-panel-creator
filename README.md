@@ -65,6 +65,8 @@ Unless you have changed the `PORT` on which the server runs, then this `.env` sh
 
 ### Running the project
 
+**Note:**Please ensure you run the project from the root directory.
+
 With the dependencies installed and environment variables configured you can then run the project:
 
 ```
