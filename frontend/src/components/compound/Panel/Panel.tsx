@@ -37,11 +37,16 @@ export const Panel = ({
         </div>
 
         <div className="flex gap-1">
-          <Button tooltip="Edit" onClick={onEdit}>
+          <Button tooltip="Edit" onClick={onEdit} data-testid="edit-button">
             <i className="fa-solid fa-pen"></i>
           </Button>
 
-          <Button variant="error" tooltip="Delete" onClick={onDelete}>
+          <Button
+            variant="error"
+            tooltip="Delete"
+            onClick={onDelete}
+            data-testid="delete-button"
+          >
             <i className="fa-solid fa-trash"></i>
           </Button>
         </div>
