@@ -8,62 +8,14 @@ type UseAvailableBiomarkersConfig = {
 };
 
 const fetchBiomarkers = async () => {
-  await new Promise((resolve) => setTimeout(resolve, 1000));
+  const response = await fetch(
+    `${import.meta.env.VITE_API_BASE_URL}/api/markers`
+  );
+  if (!response.ok) {
+    throw new Error("Failed to fetch biomarkers");
+  }
 
-  const markers: Biomarker[] = [
-    {
-      id: 1,
-      name: "Biomarker 1",
-      description: "This is the first biomarker",
-    },
-    {
-      id: 2,
-      name: "Biomarker 2",
-      description: "This is the second biomarker",
-    },
-    {
-      id: 3,
-      name: "Biomarker 3",
-      description: "This is the third biomarker",
-    },
-    {
-      id: 4,
-      name: "Biomarker 4",
-      description: "This is the fourth biomarker",
-    },
-    {
-      id: 5,
-      name: "Biomarker 5",
-      description: "This is the fifth biomarker",
-    },
-    {
-      id: 6,
-      name: "Biomarker 6",
-      description: "This is the sixth biomarker",
-    },
-    {
-      id: 7,
-      name: "Biomarker 7",
-      description: "This is the seventh biomarker",
-    },
-    {
-      id: 8,
-      name: "Biomarker 8",
-      description: "This is the eighth biomarker",
-    },
-    {
-      id: 9,
-      name: "Biomarker 9",
-      description: "This is the ninth biomarker",
-    },
-    {
-      id: 10,
-      name: "Biomarker 10",
-      description: "This is the tenth biomarker",
-    },
-  ];
-
-  return { markers };
+  return response.json() as Promise<{ markers: Biomarker[] }>;
 };
 
 export const useAvailableBiomarkers = ({
