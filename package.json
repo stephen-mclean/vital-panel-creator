@@ -9,7 +9,8 @@
     "start": "node dist/index.js",
     "dev:server": "npx ts-node-dev --respawn --transpile-only index.ts",
     "dev:ui": "cd frontend && npm run dev",
-    "dev": "concurrently \"npm:dev:*\""
+    "dev": "concurrently \"npm:dev:*\"",
+    "postinstall": "cd frontend && npm install"
   },
   "author": "",
   "license": "ISC",

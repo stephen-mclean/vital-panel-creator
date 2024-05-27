@@ -12,6 +12,8 @@ type Props = {
   onEdit: () => void;
 };
 
+const MAX_MARKERS_TO_DISPLAY = 5;
+
 export const Panel = ({
   panel: { name, markers, method },
   onDelete,
@@ -20,6 +22,9 @@ export const Panel = ({
   const getDisplayableCollectionMethod = (method: CollectionMethod) => {
     return COLLECTION_METHOD_DISPLAY_NAMES[method];
   };
+
+  const markersToDisplay = markers.slice(0, MAX_MARKERS_TO_DISPLAY);
+  const remainingMarkers = markers.length - markersToDisplay.length;
 
   return (
     <div className="flex flex-col gap-4 rounded p-2 border border-gray-100">
@@ -56,10 +61,11 @@ export const Panel = ({
         <span className="font-sans uppercase text-xs text-gray-500 font-light">
           Biomarkers
         </span>
-        <div className="flex gap-1 flex-wrap">
-          {markers.map((marker) => (
+        <div className="flex gap-1 flex-wrap max-h-24 overflow-y-auto">
+          {markersToDisplay.map((marker) => (
             <Chip key={marker.id} label={marker.name} />
           ))}
+          {remainingMarkers > 0 && <Chip label={`+${remainingMarkers}`} />}
         </div>
       </div>
 

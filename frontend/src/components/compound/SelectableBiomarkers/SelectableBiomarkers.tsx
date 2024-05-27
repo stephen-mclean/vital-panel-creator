@@ -80,12 +80,14 @@ export const SelectableBiomarkers = ({
   return (
     <div className="flex flex-col">
       <span className="text-sm text-gray-600 mb-2">Biomarkers</span>
-      <Input
-        value={query}
-        onChange={onSearchChange}
-        placeholder="Search by name or description"
-      />
-      <div className="flex gap-1 mb-4">
+      <div className="mb-4">
+        <Input
+          value={query}
+          onChange={onSearchChange}
+          placeholder="Search by name or description"
+        />
+      </div>
+      <div className="flex gap-1 mb-4 flex-wrap max-h-24 overflow-y-auto">
         {selected.map((b) => (
           <Chip
             label={b.name}
