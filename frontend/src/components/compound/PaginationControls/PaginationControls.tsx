@@ -21,6 +21,7 @@ export const PaginationControls = ({
         variant="ghost"
         onClick={onPrevious}
         disabled={!canNavigatePrevious || disabled}
+        data-testid="previous-button"
       >
         <i className="fa-solid fa-chevron-left"></i>
         Previous
@@ -29,6 +30,7 @@ export const PaginationControls = ({
         variant="ghost"
         onClick={onNext}
         disabled={!canNavigateNext || disabled}
+        data-testid="next-button"
       >
         Next
         <i className="fa-solid fa-chevron-right"></i>
