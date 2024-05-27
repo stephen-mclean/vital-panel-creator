@@ -1,10 +1,12 @@
 import { useEffect, useState } from "react";
+import Fuse from "fuse.js";
 import { Biomarker } from "../../types";
 import { DEFAULT_PAGE_LIMIT } from "../constants";
 
 type UseAvailableBiomarkersConfig = {
   page: number;
   limit: number;
+  query?: string;
 };
 
 const fetchBiomarkers = async () => {
@@ -21,10 +23,12 @@ const fetchBiomarkers = async () => {
 export const useAvailableBiomarkers = ({
   page = 0,
   limit = DEFAULT_PAGE_LIMIT,
+  query,
 }: UseAvailableBiomarkersConfig) => {
   const [isLoading, setIsLoading] = useState(false);
   const [isError, setIsError] = useState(false);
   const [allMarkers, setAllMarkers] = useState<Biomarker[]>([]);
+  const fuse = new Fuse(allMarkers, { keys: ["name", "description"] });
 
   useEffect(() => {
     setIsLoading(true);
@@ -36,14 +40,16 @@ export const useAvailableBiomarkers = ({
         setIsLoading(false);
       } catch (error) {
         setIsError(true);
-        console.log(" ==== got error =====", error);
       }
     };
 
     loadBiomarkers();
   }, []);
 
-  const pagedMarkers = allMarkers.slice(page * limit, (page + 1) * limit);
+  const filteredMarkers = query
+    ? fuse.search(query).map((r) => r.item)
+    : allMarkers;
+  const pagedMarkers = filteredMarkers.slice(page * limit, (page + 1) * limit);
   const mappedMarkers: Biomarker[] = pagedMarkers.map((marker) => ({
     id: marker.id,
     name: marker.name,
@@ -54,6 +60,6 @@ export const useAvailableBiomarkers = ({
     isLoading,
     isError,
     markers: mappedMarkers,
-    total: allMarkers.length,
+    total: filteredMarkers.length,
   };
 };

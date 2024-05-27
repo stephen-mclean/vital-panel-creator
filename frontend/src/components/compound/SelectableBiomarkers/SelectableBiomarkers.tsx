@@ -6,6 +6,7 @@ import { InfoMessage } from "../../base/InfoMessage/InfoMessage";
 import { SelectableBiomarker } from "../SelectableBiomarker/SelectableBiomarker";
 import { PaginationControls } from "../PaginationControls/PaginationControls";
 import { DEFAULT_PAGE_LIMIT } from "../../../api/constants";
+import { Input } from "../../base/Input/Input";
 
 type Props = {
   selected: Biomarker[];
@@ -19,10 +20,17 @@ export const SelectableBiomarkers = ({
   disabled,
 }: Props) => {
   const [page, setPage] = useState(0);
+  const [query, setQuery] = useState("");
   const { isError, isLoading, markers, total } = useAvailableBiomarkers({
     page,
     limit: DEFAULT_PAGE_LIMIT,
+    query,
   });
+
+  const onSearchChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setQuery(event.target.value);
+    setPage(0);
+  };
 
   const goToNextPage = () => {
     setPage(page + 1);
@@ -72,6 +80,11 @@ export const SelectableBiomarkers = ({
   return (
     <div className="flex flex-col">
       <span className="text-sm text-gray-600 mb-2">Biomarkers</span>
+      <Input
+        value={query}
+        onChange={onSearchChange}
+        placeholder="Search by name or description"
+      />
       <div className="flex gap-1 mb-4">
         {selected.map((b) => (
           <Chip
