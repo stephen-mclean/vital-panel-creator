@@ -105,12 +105,35 @@ I have decided not to rely on a state management solution for this app (like Red
 
 This directory contains several hooks which fetch and return the data needed. I have structured it this way as this layer provides a nice abstraction which we could later replace the implementation of if we decided to implement a state management solution. The hooks in that directory could delegate their work to something like Redux or React Query in the future and keep their API the same so the consuming components would still retrieve the data in the same way, even if the underlying storage were to change.
 
+### Persisting created panels
+
+I have decided to use `localStorage` to persist the panels a user creates. They are stored under the key: `vital-panels`.
+
 ## Issues encountered
 
 ### Vital API - CORS
 
 Initially this repo only contained a React app, and didn't have a server at all. However, once I installed `@tryvital/vital-node` and started using it from the client, I found that the API requests were failing due to CORS.
 The fix for this was quite easy, however searching "CORS" on the Vital docs doesn't return any results and I feel that it could be added to the docs for `@tryvital/vital-node` that the API doesn't work from a browser environment.
+
+## Vital API - Feedback
+
+Overall, I found getting up and running and retrieving data via the Vital API to be really easy and fast. There are a couple of small pieces of feedback I have:
+
+1. Use cases / sample apps: The quickstart guide in the documentation is really good. I feel that adding a little around that could be useful. Specifically, I think having a section showcasing different use cases in the API documentation, or having a section with some sample applications would be really helpful. I think it would showcase Vital to customers, and also benefit engineers when using the API.
+2. The Typescript integration of the Node API is generally very good. There are a couple of API functions where pieces of documentation are missing/incomplete. An example is the `getMarkers` function which doesn't provide an example. The intellisense looks like this:
+
+```
+@throws — {
+
+@link — Vital.UnprocessableEntityError}
+
+@example
+```
+
+A pass of the Typescript function documentation would be useful here as well I think.
+
+3. The API reference is really good and being able to copy code snippets is really useful. One thing that would make it even more useful would be the ability to have the code snippets reflect the user input. Right now the code snippets are static and don't include anything I type into the page. This would have made the developer experience even easier if it had existed.
 
 ## 3rd Party Libraries Used
 
