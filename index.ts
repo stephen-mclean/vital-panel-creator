@@ -1,6 +1,7 @@
 import express, { Express, Request, Response } from "express";
 import { VitalClient, VitalEnvironment } from "@tryvital/vital-node";
 import { config } from "dotenv";
+import cors from "cors"
 
 config();
 
@@ -20,6 +21,8 @@ const vital = new VitalClient({
   apiKey: process.env.VITAL_API_KEY || "",
   environment: vitalEnvironment,
 });
+
+app.use(cors());
 
 app.get("/api/markers", async (req: Request, res: Response) => {
   try {
